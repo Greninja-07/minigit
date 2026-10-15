@@ -5,6 +5,7 @@
 3. Move the current branch forward to the new commit.
 """
 
+from minigit import color
 from minigit.errors import MinigitError
 from minigit.identity import author_signature
 from minigit.index import Index
@@ -52,5 +53,5 @@ def run(args, repo):
 
     branch = current_branch(repo) or "detached HEAD"
     root = " (root-commit)" if parent is None else ""
-    print(f"[{branch}{root} {sha[:7]}] {message.splitlines()[0]}")
+    print(f"[{branch}{root} {color.yellow(sha[:7])}] {message.splitlines()[0]}")
     return 0
